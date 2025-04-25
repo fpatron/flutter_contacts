@@ -91,7 +91,9 @@ public class ContactsServicePlugin implements MethodCallHandler, FlutterPlugin, 
 
   @Override
   public void onDetachedFromEngine(FlutterPluginBinding binding) {
-    methodChannel.setMethodCallHandler(null);
+    if (methodChannel != null) {
+      methodChannel.setMethodCallHandler(null);
+    }
     methodChannel = null;
     contentResolver = null;
     this.delegate = null;
